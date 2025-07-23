@@ -17,6 +17,8 @@ namespace SPACE_RPG2D
 			}
 		}
 
+		[SerializeField] string Query = "";
+		[SerializeField] GameObject Obj_ansc;
 		IEnumerator STIMULATE()
 		{
 			#region frame_rate
@@ -32,6 +34,8 @@ namespace SPACE_RPG2D
 			LOG.SaveLog(LIST.map(elem => elem).ToTable(name: "LIST<int> original"));
 			LOG.SaveLog(LIST.map(elem => elem * Mathf.PI).ToTable(name: "LIST<float> from map"));
 			LOG.SaveLog(LIST.refine((elem, i) => (i % 3 == 0)).map((elem, i) => elem ).ToTable(name: "LIST<float> from refine + map"));
+
+			Debug.Log(this.Obj_ansc.Query(this.Query));
 		}
 	} 
 }
