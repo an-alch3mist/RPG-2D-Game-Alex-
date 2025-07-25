@@ -686,7 +686,7 @@ MonoBehaviour:
   groundDetected: 0
   xSpeed: 8
   jumpForce: 500
-  groundCheckDist: 1.5
+  groundCheckDist: 1.4
   goundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -709,7 +709,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &1271429906
 CapsuleCollider2D:

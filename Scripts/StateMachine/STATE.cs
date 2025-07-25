@@ -25,12 +25,19 @@ namespace SPACE_RPG2D
 			var player = SM.info.player;
 
 			// handle Jump
-			if (player.inputAction.player.jump.WasPerformedThisFrame() && 
-				player.groundDetected == true)
+			if (player.groundDetected == true)
 			{
-				Debug.Log("Transition to Player_JumpState");
-				SM.GoTo(SM.MAP_STATE[StateType.player_jump]);
-				player.groundDetected = false;
+				if (player.inputAction.player.jump.WasPerformedThisFrame())
+				{
+					Debug.Log("Transition to Player_JumpState");
+					SM.GoTo(SM.MAP_STATE[StateType.player_jump]);
+					player.groundDetected = false;
+				}
+			}
+			// handle fall
+			else if (player.groundDetected == false)
+			{
+				SM.GoTo(SM.MAP_STATE[StateType.player_fall]);
 			}
 		}
 
