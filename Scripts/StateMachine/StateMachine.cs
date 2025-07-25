@@ -7,11 +7,12 @@ namespace SPACE_RPG2D
 {
 	public class StateMachine
 	{
-		public EntityState CurrentState;
+		EntityState CurrentState;
 		// called externally when state is changed
-		public void Goto(EntityState NewState)
+		public void GoTo(EntityState NewState)
 		{
-			this.CurrentState?.Exit(); // if not null
+			this.CurrentState? // if not null
+				.Exit();
 
 			NewState.Enter();
 			this.CurrentState = NewState;
@@ -20,47 +21,62 @@ namespace SPACE_RPG2D
 		// called externally every frame
 		public void UpdateCurrentState()
 		{
-			this.CurrentState?.Update(); // if not null
+			this.CurrentState? // if not null
+				.Update(); 
 		}
+
+		public Dictionary<StateType, EntityState> MAP_STATE = new Dictionary<StateType, EntityState>();
+	}
+
+	public enum StateType
+	{
+		player_idle,
+		player_move,
+		player_jump,
 	}
 
 	public abstract class EntityState
 	{
-		public string name = "state-name"; // this id is also used inside animator.SetBool()
-		public string id = "state-id"; // this id is also used inside animator.SetBool()
+		public string id; // this id is also used inside animator.SetBool()
+		public StateType stateType;
+		public StateMachine stateMachine;
+		public IComponentInfo info; // gameObject, rb, animator ....
 
-		public GameObject gameObject;
-		public Animator animator;
-		public Rigidbody2D rb;
-
-		protected EntityState(string id, GameObject gameObject, GameObject animator, GameObject rb)
+		protected EntityState(StateType stateType, StateMachine stateMachine, IComponentInfo info)
 		{
-			this.name = this.id = id;
-			this.gameObject = gameObject;
-			this.animator = animator.GetComponent<Animator>();
-			this.rb = animator.GetComponent<Rigidbody2D>();
+			this.stateType = stateType;
+			this.id = stateType.ToString();
+			this.stateMachine = stateMachine;
+			this.info = info;
+		}
+
+		protected EntityState()
+		{
+
 		}
 
 		public virtual void Enter()
 		{
-			Debug.Log($"state id: {this.id} enter");
+			Debug.Log($"state id: {this.id} Enter()");
 		}
 
 		public virtual void Update()
 		{
-			Debug.Log($"state id: {this.id} update");
+			Debug.Log($"state id: {this.id} Update()");
 		}
 
 		public virtual void Exit()
 		{
-			Debug.Log($"state id: {this.id} exit");
+			Debug.Log($"state id: {this.id} Exit()");
 		}
 	}
 
+	#region example
 	// example EntityState >>
-	public class IdleState : EntityState
+	/*
+	public class AState : EntityState
 	{
-		public IdleState(string id, GameObject gameObject, GameObject animator, GameObject rb) 
+		public AState(string id, GameObject gameObject, GameObject animator, GameObject rb)
 				  : base(id, gameObject, animator, rb)
 		{
 
@@ -84,5 +100,7 @@ namespace SPACE_RPG2D
 		}
 
 	}
-	// << example EntityState
+	*/
+	// << example EntityState 
+	#endregion
 }

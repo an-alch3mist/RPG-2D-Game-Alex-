@@ -24,10 +24,14 @@ namespace SPACE_RPG2D
 			yield return null;
 			#endregion
 
+			Debug.Log("STIMULATE(): " + this);
+
+			Debug.Log(StateType.player_idle.ToString());
+
+
 			//this.Check_map_refine();
 			//this.Check_gameObjectQuery();
-
-			this.Check_StateMachine();
+			//this.Check_StateMachine();
 		}
 
 		#region checked
@@ -54,8 +58,32 @@ namespace SPACE_RPG2D
 
 		void Check_StateMachine()
 		{
+			Debug.Log("called: Check_StateMachine()");
 			GameObject obj = this.gameObject;
-			IdleState _IdleState = new IdleState("player-idle", obj, obj.Query("anim"), obj.Query("rb"));
+			/*
+			EntityState _IdleState = new EntityState()
+			{
+				id
+			};
+			*/
+		}
+
+		class IdleState : EntityState
+		{
+			public override void Enter()
+			{
+				base.Enter();
+			}
+
+			public override void Exit()
+			{
+				base.Exit();
+			}
+
+			public override void Update()
+			{
+				base.Update();
+			}
 		}
 	} 
 }
