@@ -13,18 +13,23 @@ namespace SPACE_RPG2D
 		public PlayerInputActions inputAction; 
 		#endregion
 		public Vector2 inpVel { get; private set; }
+		public bool groundDetected;
 
-		Player_IdleState idleState;
+		
 		[Header("movment config")]
 		[SerializeField] float xSpeed = 8;
 		[SerializeField] float jumpForce = 5;
+
+		[Header("collision config")]
+		[SerializeField] float groundCheckDist = 0.1f;
+		[SerializeField] LayerMask goundLayer;
 
 		private void Awake()
 		{
 			Debug.Log("Awake(): " + this);
 
 			#region new input system
-			inputAction = new PlayerInputActions(); 
+			inputAction = new PlayerInputActions();
 			#endregion
 
 			// 0. create state machine
@@ -37,10 +42,11 @@ namespace SPACE_RPG2D
 			});
 
 			// 1. create entity state(stateType, ref stateMachine) (store is done auto while creation)
-			idleState = new Player_IdleState(StateType.player_idle, SM);
+			Player_IdleState idleState = new Player_IdleState(StateType.player_idle, SM);
 			Player_MoveState moveState = new Player_MoveState(StateType.player_move, SM);
 			Player_JumpState jumpState = new Player_JumpState(StateType.player_jump, SM);
 			Player_FallState fallState = new Player_FallState(StateType.player_fall, SM);
+			SM.GoTo(fallState);
 			LOG.SaveLog(SM.MAP_STATE.ToTable(name: "MAP_STATE<>"));
 		}
 
@@ -69,13 +75,15 @@ namespace SPACE_RPG2D
 			#endregion
 		}
 
-		private void Start()
-		{
-			SM.GoTo(this.idleState);
-		}
 
 		private void Update()
 		{
+			this.HandleMovement();
+			this.HandleFlip();
+			this.HandleCollisionDetection();
+			this.DrawCollisionDetection();
+			this.HandleYVel();
+
 			SM.UpdateCurrentState();
 		}
 
@@ -106,6 +114,18 @@ namespace SPACE_RPG2D
 			var rb = SM.info.rb;
 			rb.AddForce(Vector2.up * this.jumpForce);
 		}
+
+		public void HandleCollisionDetection()
+		{
+			this.groundDetected = Physics2D.Raycast(this.transform.position, -Vector2.up, this.groundCheckDist, this.goundLayer);
+		}
 		#endregion
+
+		private void DrawCollisionDetection()
+		{
+			DRAW.col = Color.red;
+			DRAW.dt = Time.deltaTime;
+			DRAW.ARROW(transform.position, transform.position + new Vector3(0, -this.groundCheckDist, 0), t: 1f);
+		}
 	}
 }

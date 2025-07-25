@@ -18,7 +18,7 @@ namespace SPACE_RPG2D
 		}
 
 		[SerializeField] Rigidbody2D cube;
-		[SerializeField] float jumpForce = 10;
+		[SerializeField] float jumpForce = 400;
 
 		IEnumerator STIMULATE()
 		{

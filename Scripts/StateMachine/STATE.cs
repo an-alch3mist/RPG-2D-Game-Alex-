@@ -25,10 +25,12 @@ namespace SPACE_RPG2D
 			var player = SM.info.player;
 
 			// handle Jump
-			if (player.inputAction.player.jump.WasPerformedThisFrame())
+			if (player.inputAction.player.jump.WasPerformedThisFrame() && 
+				player.groundDetected == true)
 			{
 				Debug.Log("Transition to Player_JumpState");
 				SM.GoTo(SM.MAP_STATE[StateType.player_jump]);
+				player.groundDetected = false;
 			}
 		}
 
@@ -84,9 +86,6 @@ namespace SPACE_RPG2D
 			if (player.inpVel.x == 0)
 				base.SM.GoTo(base.SM.MAP_STATE[StateType.player_idle]);
 			#endregion
-
-			player.HandleMovement();
-			player.HandleFlip();
 		}
 		public override void Exit()
 		{
@@ -136,8 +135,6 @@ namespace SPACE_RPG2D
 			// GoTo if required
 			if (rb.velocity.y < 0f)
 				SM.GoTo(SM.MAP_STATE[StateType.player_fall]);
-
-			player.HandleYVel();
 		}
 
 		public override void Exit()
@@ -162,7 +159,8 @@ namespace SPACE_RPG2D
 			base.Update();
 			var player = SM.info.player;
 			// GoTo if required
-			player.HandleYVel();
+			if (player.groundDetected == true)
+				SM.GoTo(SM.MAP_STATE[StateType.player_idle]);
 		}
 
 		public override void Exit()
