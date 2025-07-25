@@ -17,6 +17,9 @@ namespace SPACE_RPG2D
 			}
 		}
 
+		[SerializeField] Rigidbody2D cube;
+		[SerializeField] float jumpForce = 10;
+
 		IEnumerator STIMULATE()
 		{
 			#region frame_rate
@@ -26,12 +29,12 @@ namespace SPACE_RPG2D
 
 			Debug.Log("STIMULATE(): " + this);
 
-			Debug.Log(StateType.player_idle.ToString());
-
-
+			//Debug.Log(StateType.player_idle.ToString());
 			//this.Check_map_refine();
 			//this.Check_gameObjectQuery();
 			//this.Check_StateMachine();
+
+			this.cube.AddForce(Vector2.up * this.jumpForce);
 		}
 
 		#region checked

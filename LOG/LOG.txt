@@ -1,624 +1,263 @@
-LIST<int> original:
-m_value  
----------
-0        
-1        
-4        
-10       
-100      
-1000     
--1       
-0        
-1        
-2        
-
-
-LIST<float> from map:
-m_value    
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-m_value  
----------
-0        
-10       
--1       
-2        
-
-
-LIST<int> original:
-m_value  
----------
-0        
-1        
-4        
-10       
-100      
-1000     
--1       
-0        
-1        
-2        
-
-
-LIST<float> from map:
-m_value    
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-m_value  
----------
-0        
-10       
--1       
-2        
-
-
-LIST<int> original:
-m_value  
----------
-0        
-1        
-4        
-10       
-100      
-1000     
--1       
-0        
-1        
-2        
-
-
-LIST<float> from map:
-m_value    
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-m_value  
----------
-0        
-10       
--1       
-2        
-
-
-LIST<int> original:
-m_value  
----------
-0        
-1        
-4        
-10       
-100      
-1000     
--1       
-0        
-1        
-2        
-
-
-LIST<float> from map:
-m_value    
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-m_value  
----------
-0        
-10       
--1       
-2        
-
-
-LIST<int> original:
-m_value~m_value  
------------------
-0                
-1                
-4                
-10               
-100              
-1000             
--1               
-0                
-1                
-2                
-
-
-LIST<float> from map:
-m_value~m_value  
------------------
-0                
-3.141593         
-12.56637         
-31.41593         
-314.1593         
-3141.593         
--3.141593        
-0                
-3.141593         
-6.283185         
-
-
-LIST<float> from refine + map:
-m_value~m_value  
------------------
-0                
-10               
--1               
-2                
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
-
-
-LIST<int> original:
-~m_value  
-----------
-0         
-1         
-4         
-10        
-100       
-1000      
--1        
-0         
-1         
-2         
-
-
-LIST<float> from map:
-~m_value   
------------
-0          
-3.141593   
-12.56637   
-31.41593   
-314.1593   
-3141.593   
--3.141593  
-0          
-3.141593   
-6.283185   
-
-
-LIST<float> from refine + map:
-~m_value  
-----------
-0         
-10        
--1        
-2         
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+player_jump   | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine  
+player_fall   | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+player_jump   | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine  
+player_fall   | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+player_jump   | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine  
+player_fall   | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+player_jump   | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine  
+player_fall   | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key       | pri~value                                                                   
+--------------+-----------------------------------------------------------------------------
+player_idle   | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine  
+player_move   | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine  
+player_jump   | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine  
+player_fall   | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine  
 
 

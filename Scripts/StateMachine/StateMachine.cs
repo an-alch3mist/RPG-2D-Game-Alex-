@@ -5,15 +5,49 @@ using SPACE_UTIL;
 
 namespace SPACE_RPG2D
 {
+	// >> Dynamic
+	public enum StateType
+	{
+		player_idle,
+		player_move,
+
+		player_jump,
+		player_fall,
+		player_air,
+	}
+
+	public class PlayerInfo
+	{
+		public GameObject obj;
+		public Animator animator;
+		public Rigidbody2D rb;
+		public Player player;
+	}
+	// << Dynamic
+
+
 	public class StateMachine
 	{
+		public string name;
 		EntityState CurrentState;
+		public Dictionary<StateType, EntityState> MAP_STATE;
+		public PlayerInfo info;
+
+		public StateMachine(string name, PlayerInfo playerInfo)
+		{
+			this.name = name + "StateMachine";
+			this.MAP_STATE = new Dictionary<StateType, EntityState>();
+			this.info = playerInfo;
+		}
+
 		// called externally when state is changed
 		public void GoTo(EntityState NewState)
 		{
+			if (NewState == this.CurrentState) // same as current state
+				return;
+
 			this.CurrentState? // if not null
 				.Exit();
-
 			NewState.Enter();
 			this.CurrentState = NewState;
 		}
@@ -24,50 +58,50 @@ namespace SPACE_RPG2D
 			this.CurrentState? // if not null
 				.Update(); 
 		}
-
-		public Dictionary<StateType, EntityState> MAP_STATE = new Dictionary<StateType, EntityState>();
 	}
 
-	public enum StateType
-	{
-		player_idle,
-		player_move,
-		player_jump,
-	}
 
+	[System.Serializable]
 	public abstract class EntityState
 	{
 		public string id; // this id is also used inside animator.SetBool()
 		public StateType stateType;
-		public StateMachine stateMachine;
-		public IComponentInfo info; // gameObject, rb, animator ....
+		public StateMachine SM;
 
-		protected EntityState(StateType stateType, StateMachine stateMachine, IComponentInfo info)
+		protected EntityState(StateType stateType, StateMachine stateMachine)
 		{
 			this.stateType = stateType;
 			this.id = stateType.ToString();
-			this.stateMachine = stateMachine;
-			this.info = info;
+			this.SM = stateMachine;
+
+			stateMachine.MAP_STATE[stateType] = this; // ref in MAP_STATE
 		}
 
-		protected EntityState()
+		protected EntityState() { }
+
+		#region ad
+		public override string ToString()
 		{
-
+			//return base.ToString();
+			return $"(EntityState) stateType: {this.stateType}, stateMachine ref: {this.SM.name}";
 		}
+		#endregion
 
 		public virtual void Enter()
 		{
 			Debug.Log($"state id: {this.id} Enter()");
+			SM.info.animator.SetBool(this.id, true); // must be animator != null
 		}
 
 		public virtual void Update()
 		{
-			Debug.Log($"state id: {this.id} Update()");
+			// Debug.Log($"state id: {this.id} Update()");
 		}
 
 		public virtual void Exit()
 		{
 			Debug.Log($"state id: {this.id} Exit()");
+			SM.info.animator.SetBool(this.id, false);  // must be animator != null
 		}
 	}
 
