@@ -11,9 +11,11 @@ namespace SPACE_RPG2D
 		player_idle,
 		player_move,
 
+		player_air,
 		player_jump,
 		player_fall,
-		player_air,
+
+		none,
 	}
 
 	public class PlayerInfo
@@ -41,8 +43,9 @@ namespace SPACE_RPG2D
 		}
 
 		// called externally when state is changed
-		public void GoTo(EntityState NewState)
+		public void GoTo(StateType stateType)
 		{
+			EntityState NewState = this.MAP_STATE[stateType];
 			if (NewState == this.CurrentState) // same as current state
 				return;
 
@@ -68,13 +71,21 @@ namespace SPACE_RPG2D
 		public StateType stateType;
 		public StateMachine SM;
 
-		protected EntityState(StateType stateType, StateMachine stateMachine)
+		public StateType blendStateType;
+		public string blend_id;
+
+		protected EntityState(StateType stateType, StateMachine stateMachine, StateType blendStateType = StateType.none)
 		{
 			this.stateType = stateType;
 			this.id = stateType.ToString();
 			this.SM = stateMachine;
 
 			stateMachine.MAP_STATE[stateType] = this; // ref in MAP_STATE
+
+			#region blendTree
+			this.blendStateType = blendStateType;
+			this.blend_id = blendStateType.ToString();
+			#endregion
 		}
 
 		protected EntityState() { }
@@ -90,7 +101,12 @@ namespace SPACE_RPG2D
 		public virtual void Enter()
 		{
 			Debug.Log($"state id: {this.id} Enter()");
-			SM.info.animator.SetBool(this.id, true); // must be animator != null
+
+			// must be animator != null
+			if (this.blendStateType == StateType.none)
+				SM.info.animator.SetBool(this.id, true); 
+			else
+				SM.info.animator.SetBool(this.blend_id, true);
 		}
 
 		public virtual void Update()
@@ -101,7 +117,12 @@ namespace SPACE_RPG2D
 		public virtual void Exit()
 		{
 			Debug.Log($"state id: {this.id} Exit()");
-			SM.info.animator.SetBool(this.id, false);  // must be animator != null
+
+			// must be animator != null
+			if (this.blendStateType == StateType.none)
+				SM.info.animator.SetBool(this.id, false); 
+			else
+				SM.info.animator.SetBool(this.blend_id, false);
 		}
 	}
 

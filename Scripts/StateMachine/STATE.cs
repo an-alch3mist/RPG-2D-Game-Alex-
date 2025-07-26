@@ -6,6 +6,30 @@ using SPACE_UTIL;
 
 namespace SPACE_RPG2D
 {
+	// used as >>
+	public class Player_State : EntityState
+	{
+		public Player_State(StateMachine stateMachine) : base(StateType.none, stateMachine)
+		{
+		}
+
+		public override void Enter()
+		{
+			base.Enter();
+		}
+		public override void Update()
+		{
+			base.Update();
+			// GoTo When required
+		}
+		public override void Exit()
+		{
+			base.Exit();
+		}
+	}
+	// << used as
+
+	#region Ground
 	public class Player_GroundState : EntityState
 	{
 		public Player_GroundState(StateType stateType, StateMachine stateMachine) : base(stateType, stateMachine)
@@ -22,23 +46,30 @@ namespace SPACE_RPG2D
 			base.Update();
 			// GoTo if required
 
-			var player = SM.info.player;
+			var player = SM.info.player; var rb = SM.info.rb;
+			// handle x movement
+			player.HandleXMovement();
+			player.HandleXFlip();
 
-			// handle Jump
-			if (player.groundDetected == true)
+			// handle y detection + anim
+			player.HandleYCollisionDetection();
+			player.HandleYAnim();
+
+			#region GoTo
+			// fall
+			// non-zero negative check
+			if (rb.velocity.y < -C.e) // could also use ground detection == false (wont work with wider collider with narrow width ray cast)
+				SM.GoTo(StateType.player_fall);
+			// jump
+			else if (player.groundDetected == true)
 			{
 				if (player.inputAction.player.jump.WasPerformedThisFrame())
 				{
-					Debug.Log("Transition to Player_JumpState");
-					SM.GoTo(SM.MAP_STATE[StateType.player_jump]);
+					SM.GoTo(StateType.player_jump);
 					player.groundDetected = false;
 				}
 			}
-			// handle fall
-			else if (player.groundDetected == false)
-			{
-				SM.GoTo(SM.MAP_STATE[StateType.player_fall]);
-			}
+			#endregion
 		}
 
 		public override void Exit()
@@ -46,10 +77,9 @@ namespace SPACE_RPG2D
 			base.Exit();
 		}
 	}
-
 	public class Player_IdleState : Player_GroundState
 	{
-		public Player_IdleState(StateType stateType, StateMachine stateMachine) : base(stateType, stateMachine)
+		public Player_IdleState(StateMachine stateMachine) : base(StateType.player_idle, stateMachine)
 		{
 		}
 
@@ -64,7 +94,7 @@ namespace SPACE_RPG2D
 			#region GoTo
 			var player = SM.info.player;
 			if (player.inpVel.x != 0)
-				base.SM.GoTo(base.SM.MAP_STATE[StateType.player_move]); 
+				SM.GoTo(StateType.player_move);
 			#endregion
 		}
 		public override void Exit()
@@ -73,10 +103,9 @@ namespace SPACE_RPG2D
 		}
 
 	}
-
 	public class Player_MoveState : Player_GroundState
 	{
-		public Player_MoveState(StateType stateType, StateMachine stateMachine) : base(stateType, stateMachine)
+		public Player_MoveState(StateMachine stateMachine) : base(StateType.player_move, stateMachine)
 		{
 		}
 
@@ -91,7 +120,7 @@ namespace SPACE_RPG2D
 			var player = SM.info.player;
 			#region GoTo
 			if (player.inpVel.x == 0)
-				base.SM.GoTo(base.SM.MAP_STATE[StateType.player_idle]);
+				SM.GoTo(StateType.player_idle);
 			#endregion
 		}
 		public override void Exit()
@@ -99,10 +128,12 @@ namespace SPACE_RPG2D
 			base.Exit();
 		}
 	}
+	#endregion
 
-	public class Player_State : EntityState
+	#region Air
+	public class Player_AirState : EntityState
 	{
-		public Player_State(StateType stateType, StateMachine stateMachine) : base(stateType, stateMachine)
+		public Player_AirState(StateType stateType, StateMachine stateMachine, StateType blendStateType) : base(stateType, stateMachine, blendStateType)
 		{
 		}
 
@@ -110,21 +141,30 @@ namespace SPACE_RPG2D
 		{
 			base.Enter();
 		}
+
 		public override void Update()
 		{
 			base.Update();
-			// GoTo When required
+			var player = SM.info.player;
+
+			// handle x movement
+			player.HandleXAirMovement();
+			player.HandleXFlip();
+
+			// handle y detection + anim
+			player.HandleYCollisionDetection();
+			player.HandleYAnim();
 		}
+
 		public override void Exit()
 		{
 			base.Exit();
 		}
+
 	}
-
-
-	public class Player_JumpState : EntityState
+	public class Player_JumpState : Player_AirState
 	{
-		public Player_JumpState(StateType stateType, StateMachine stateMachine) : base(stateType, stateMachine)
+		public Player_JumpState(StateMachine stateMachine) : base(StateType.player_jump, stateMachine, StateType.player_air)
 		{
 		}
 
@@ -140,8 +180,10 @@ namespace SPACE_RPG2D
 			base.Update();
 			var player = SM.info.player; var rb = SM.info.rb;
 			// GoTo if required
+			#region GoTo
 			if (rb.velocity.y < 0f)
-				SM.GoTo(SM.MAP_STATE[StateType.player_fall]);
+				SM.GoTo(StateType.player_fall); 
+			#endregion
 		}
 
 		public override void Exit()
@@ -149,10 +191,9 @@ namespace SPACE_RPG2D
 			base.Exit();
 		}
 	}
-
-	public class Player_FallState : EntityState
+	public class Player_FallState : Player_AirState
 	{
-		public Player_FallState(StateType stateType, StateMachine stateMachine) : base(stateType, stateMachine)
+		public Player_FallState(StateMachine stateMachine) : base(StateType.player_fall, stateMachine, StateType.player_air)
 		{
 		}
 
@@ -166,8 +207,10 @@ namespace SPACE_RPG2D
 			base.Update();
 			var player = SM.info.player;
 			// GoTo if required
+			#region GoTo
 			if (player.groundDetected == true)
-				SM.GoTo(SM.MAP_STATE[StateType.player_idle]);
+				SM.GoTo(StateType.player_idle); 
+			#endregion
 		}
 
 		public override void Exit()
@@ -175,4 +218,5 @@ namespace SPACE_RPG2D
 			base.Exit();
 		}
 	}
+	#endregion
 }

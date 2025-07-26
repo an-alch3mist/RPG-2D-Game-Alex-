@@ -18,6 +18,7 @@ namespace SPACE_RPG2D
 		
 		[Header("movment config")]
 		[SerializeField] float xSpeed = 8;
+		[SerializeField] float xAirSpeed = 6;
 		[SerializeField] float jumpForce = 5;
 
 		[Header("collision config")]
@@ -42,11 +43,12 @@ namespace SPACE_RPG2D
 			});
 
 			// 1. create entity state(stateType, ref stateMachine) (store is done auto while creation)
-			Player_IdleState idleState = new Player_IdleState(StateType.player_idle, SM);
-			Player_MoveState moveState = new Player_MoveState(StateType.player_move, SM);
-			Player_JumpState jumpState = new Player_JumpState(StateType.player_jump, SM);
-			Player_FallState fallState = new Player_FallState(StateType.player_fall, SM);
-			SM.GoTo(fallState);
+			new Player_IdleState(SM);
+			new Player_MoveState(SM);
+			new Player_JumpState(SM);
+			new Player_FallState(SM);
+			SM.GoTo(StateType.player_fall);
+
 			LOG.SaveLog(SM.MAP_STATE.ToTable(name: "MAP_STATE<>"));
 		}
 
@@ -78,23 +80,23 @@ namespace SPACE_RPG2D
 
 		private void Update()
 		{
-			this.HandleMovement();
-			this.HandleFlip();
-			this.HandleCollisionDetection();
-			this.DrawCollisionDetection();
-			this.HandleYVel();
-
 			SM.UpdateCurrentState();
 		}
 
 		#region Method
-		public void HandleMovement()
+		public void HandleXMovement()
 		{
 			var rb = SM.info.rb;
 			SM.info.rb.velocity = new Vector2(this.xSpeed * this.inpVel.x, rb.velocity.y);
 		}
 
-		public void HandleFlip()
+		public void HandleXAirMovement()
+		{
+			var rb = SM.info.rb;
+			SM.info.rb.velocity = new Vector2(this.xAirSpeed * this.inpVel.x, rb.velocity.y);
+		}
+
+		public void HandleXFlip()
 		{
 			var transform = SM.info.obj.gameObject.transform; var rb = SM.info.rb;
 			int currFacingDir = C.sign(rb.velocity.x);
@@ -103,7 +105,7 @@ namespace SPACE_RPG2D
 			transform.localScale = new Vector3(currFacingDir, 1, 1);
 		}
 
-		public void HandleYVel()
+		public void HandleYAnim()
 		{
 			var animator = SM.info.animator; var rb = SM.info.rb;
 			animator.SetFloat("player_yvel", rb.velocity.y);
@@ -115,17 +117,19 @@ namespace SPACE_RPG2D
 			rb.AddForce(Vector2.up * this.jumpForce);
 		}
 
-		public void HandleCollisionDetection()
+		public void HandleYCollisionDetection()
 		{
+			Vector2 center = this.gameObject.GetComponent<Collider2D>().bounds.center;
 			this.groundDetected = Physics2D.Raycast(this.transform.position, -Vector2.up, this.groundCheckDist, this.goundLayer);
+			this.DrawCollisionDetection(center);
 		}
 		#endregion
 
-		private void DrawCollisionDetection()
+		private void DrawCollisionDetection(Vector2 center)
 		{
 			DRAW.col = Color.red;
 			DRAW.dt = Time.deltaTime;
-			DRAW.ARROW(transform.position, transform.position + new Vector3(0, -this.groundCheckDist, 0), t: 1f);
+			DRAW.ARROW(center, center + new Vector2(0, -this.groundCheckDist), t: 1f);
 		}
 	}
 }
