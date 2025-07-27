@@ -14,7 +14,6 @@ namespace SPACE_RPG2D
 		#endregion
 		public Vector2 inpVel { get; private set; }
 		public bool groundDetected, wallDetected;
-		public bool basicAttackOver;
 
 		[Header("movment config")]
 		[SerializeField] float xSpeed = 8;
@@ -22,6 +21,7 @@ namespace SPACE_RPG2D
 		[SerializeField] [Range(0.05f, 1f)] float ySpeedWallMultiplier = 0.3f;
 		[SerializeField] float jumpSpeed = 15;
 		[SerializeField] float wallJumpSpeed = 10;
+		[SerializeField] float basicAttackSpeed = 1f;
 
 		[Header("collision config")]
 		[SerializeField] float groundCheckDist = 1.5f;
@@ -118,7 +118,7 @@ namespace SPACE_RPG2D
 		public void HandleYAnim()
 		{
 			var animator = SM.info.animator; var rb = SM.info.rb;
-			animator.SetFloat("player_yvel", rb.velocity.y);
+			animator.SetFloat(StateType.player_yvel_float.ToString(), rb.velocity.y);
 		}
 		public void HandleXYCollisionDetection()
 		{
@@ -146,6 +146,12 @@ namespace SPACE_RPG2D
 		{
 			var rb = SM.info.rb;
 			rb.velocity = new Vector2(-this.getXFacingDir, +1.5f) * this.wallJumpSpeed;
+		}
+
+		public void HandleXAttackMovement()
+		{
+			var rb = SM.info.rb;
+			rb.velocity = new Vector2(this.basicAttackSpeed * this.getXFacingDir, rb.velocity.y);
 		}
 		#endregion
 

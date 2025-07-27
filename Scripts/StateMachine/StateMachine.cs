@@ -21,6 +21,10 @@ namespace SPACE_RPG2D
 		player_dash,
 		player_basicattack,
 
+		// i, f >>
+		player_yvel_float,
+		player_comboattack_index,
+		// << i, f
 		none,
 	}
 

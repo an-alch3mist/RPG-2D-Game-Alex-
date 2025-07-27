@@ -74,10 +74,7 @@ namespace SPACE_RPG2D
 			}
 
 			if(player.inputAction.player.attack.WasPressedThisFrame()) // instant down
-			{
-				rb.velocity = new Vector2(0f, rb.velocity.y);
 				SM.GoTo(StateType.player_basicattack);
-			}
 			#endregion
 		}
 
@@ -200,6 +197,7 @@ namespace SPACE_RPG2D
 			base.Exit();
 		}
 	}
+	// TODO fall as parabolic after WallJump -> FallState, independent on InpVel
 	public class Player_FallState : Player_AirState
 	{
 		public Player_FallState(StateMachine stateMachine) : base(StateType.player_fall, stateMachine, StateType.player_air)
@@ -330,24 +328,30 @@ namespace SPACE_RPG2D
 	{
 		public Player_BasicAttackState(StateMachine stateMachine) : base(StateType.player_basicattack, stateMachine)
 		{
+			// at the very first time creation of state => subscribe
+			#region event subscriber approach
+			AnimationEVENT._subscribeChannel_WhenBasicAttackAnimationComplete += (o, e) =>
+			{
+				var rb = SM.info.rb;
+				// rb.velocity = new Vector2(0f, rb.velocity.y); // stop movementarily and strike
+				
+				// GoTo when required
+				#region GoTo
+				SM.GoTo(StateType.player_idle);
+				#endregion
+			};
+			#endregion
 		}
 
 		public override void Enter()
 		{
 			base.Enter();
-			var player = SM.info.player;
-			player.basicAttackOver = false; // reset
 		}
 		public override void Update()
 		{
 			base.Update();
 			var player = SM.info.player;
-			// GoTo when required
-			#region GoTo
-			// check until basicAttackOver is true
-			if(player.basicAttackOver == true)
-				SM.GoTo(StateType.player_idle);
-			#endregion
+			player.HandleXAttackMovement();
 		}
 		public override void Exit()
 		{

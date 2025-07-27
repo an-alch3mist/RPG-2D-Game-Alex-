@@ -317,8 +317,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292941405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.32, y: -1.6, z: 0}
-  m_LocalScale: {x: 1.9150196, y: 9.067835, z: 1}
+  m_LocalPosition: {x: 2.977, y: -3.8701, z: 0}
+  m_LocalScale: {x: 4.981398, y: 4.5277925, z: 1}
   m_Children: []
   m_Father: {fileID: 1527849762}
   m_RootOrder: 2
@@ -575,8 +575,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086398121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.47, y: -6.15, z: 0}
-  m_LocalScale: {x: 21.885939, y: 0.2, z: 1}
+  m_LocalPosition: {x: 0.9087, y: -6.4234, z: 0}
+  m_LocalScale: {x: 19.128311, y: 0.74672, z: 1}
   m_Children: []
   m_Father: {fileID: 1527849762}
   m_RootOrder: 0
@@ -812,6 +812,7 @@ MonoBehaviour:
   ySpeedWallMultiplier: 0.3
   jumpSpeed: 15
   wallJumpSpeed: 7
+  basicAttackSpeed: 0.3
   groundCheckDist: 1.4
   wallCheckDist: 0.5
   goundLayer:
@@ -1436,13 +1437,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875933672}
-  m_LocalRotation: {x: -0, y: -0, z: 0.16621892, w: 0.98608893}
-  m_LocalPosition: {x: -4.44, y: 1.64, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3476, y: 1.0687, z: 0}
+  m_LocalScale: {x: 1, y: 2.7544, z: 1}
   m_Children: []
   m_Father: {fileID: 1633891940}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.136}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1875933674
 Rigidbody2D:
   serializedVersion: 4
@@ -1463,7 +1464,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1875933675
 BoxCollider2D:
   m_ObjectHideFlags: 0
