@@ -49,25 +49,34 @@ namespace SPACE_RPG2D
 			var player = SM.info.player; var rb = SM.info.rb;
 			// handle x movement
 			player.HandleXMovement();
-			player.HandleXFlip();
+			player.HandleXDirFlip();
 
-			// handle y detection + anim
-			player.HandleYCollisionDetection();
+			// handle xy detection + y anim
+			player.HandleXYCollisionDetection();
 			player.HandleYAnim();
 
 			#region GoTo
 			// fall
 			// non-zero negative check
 			if (rb.velocity.y < -C.e) // could also use ground detection == false (wont work with wider collider with narrow width ray cast)
-				SM.GoTo(StateType.player_fall);
+			{
+				if (player.groundDetected == false) // if within ground detection arrow range stay in idle
+					SM.GoTo(StateType.player_fall);
+			}
 			// jump
-			else if (player.groundDetected == true)
+			else if (player.groundDetected == true || rb.velocity.y.zero())
 			{
 				if (player.inputAction.player.jump.WasPerformedThisFrame())
 				{
 					SM.GoTo(StateType.player_jump);
 					player.groundDetected = false;
 				}
+			}
+
+			if(player.inputAction.player.attack.WasPressedThisFrame()) // instant down
+			{
+				rb.velocity = new Vector2(0f, rb.velocity.y);
+				SM.GoTo(StateType.player_basicattack);
 			}
 			#endregion
 		}
@@ -149,10 +158,10 @@ namespace SPACE_RPG2D
 
 			// handle x movement
 			player.HandleXAirMovement();
-			player.HandleXFlip();
+			player.HandleXDirFlip();
 
-			// handle y detection + anim
-			player.HandleYCollisionDetection();
+			// handle xy detection + y anim
+			player.HandleXYCollisionDetection();
 			player.HandleYAnim();
 		}
 
@@ -205,14 +214,141 @@ namespace SPACE_RPG2D
 		public override void Update()
 		{
 			base.Update();
-			var player = SM.info.player;
+			var player = SM.info.player; var rb = SM.info.rb;
 			// GoTo if required
 			#region GoTo
-			if (player.groundDetected == true)
-				SM.GoTo(StateType.player_idle); 
+			if (player.groundDetected == true || rb.velocity.y.zero())
+				SM.GoTo(StateType.player_idle);
+
+			if (player.wallDetected == true)
+				SM.GoTo(StateType.player_wallslide);
 			#endregion
 		}
 
+		public override void Exit()
+		{
+			base.Exit();
+		}
+	}
+	#endregion
+
+	#region Wall
+	public class Player_WallSlideState : EntityState
+	{
+		public Player_WallSlideState(StateMachine stateMachine) : base(StateType.player_wallslide, stateMachine)
+		{
+		}
+
+		public override void Enter()
+		{
+			base.Enter();
+		}
+		public override void Update()
+		{
+			base.Update();
+			var player = SM.info.player;
+
+			// handle x movement
+			player.HandleXAirMovement();
+			player.HandleXDirFlip();
+
+			// handle xy detection + y anim
+			player.HandleXYCollisionDetection();
+			// handle wall slide
+			player.HandleWallSlide();
+
+			// GoTo when required
+			#region GoTo
+			if (player.groundDetected == true)
+				SM.GoTo(StateType.player_idle);
+
+			if (player.wallDetected == false)
+				SM.GoTo(StateType.player_fall);
+
+			if (player.inputAction.player.jump.WasPerformedThisFrame()) // instant down this frame?
+				SM.GoTo(StateType.player_walljump);
+			#endregion
+		}
+		public override void Exit()
+		{
+			base.Exit();
+		}
+	}
+	public class Player_WallJumpState : EntityState
+	{
+		public Player_WallJumpState(StateMachine stateMachine) : base(StateType.player_walljump, stateMachine, StateType.player_air)
+		{
+		}
+
+		public override void Enter()
+		{
+			base.Enter();
+
+			var player = SM.info.player; var rb = SM.info.rb;
+			player.HandleWallJump(); // perform jump when state is entered
+			Debug.Log(rb.velocity);
+			player.HandleXDirFlip();
+		}
+		public override void Update()
+		{
+			base.Update();
+			var player = SM.info.player; var rb = SM.info.rb;
+
+			// handle x movement
+			//player.HandleXAirMovement(); // donot listen to inpVel vec2 during wall jump
+			player.HandleXDirFlip();
+
+			// handle y anim parameter
+			player.HandleYAnim();
+
+			// handle xy collision detection
+			player.HandleXYCollisionDetection();
+
+			// GoTo when required
+			#region GoTo
+			// transition to player_fall : similar to Player_JumpState
+			//  transition to player_wallslide : similar to Player_Fall
+			if (rb.velocity.y < 0f)
+				SM.GoTo(StateType.player_fall);
+			if (player.wallDetected == true)
+				SM.GoTo(StateType.player_wallslide);
+			#endregion
+		}
+		public override void Exit()
+		{
+			base.Exit();
+		}
+	}
+	#endregion
+
+	#region Dash
+
+	#endregion
+
+	#region Attack
+	public class Player_BasicAttackState : EntityState
+	{
+		public Player_BasicAttackState(StateMachine stateMachine) : base(StateType.player_basicattack, stateMachine)
+		{
+		}
+
+		public override void Enter()
+		{
+			base.Enter();
+			var player = SM.info.player;
+			player.basicAttackOver = false; // reset
+		}
+		public override void Update()
+		{
+			base.Update();
+			var player = SM.info.player;
+			// GoTo when required
+			#region GoTo
+			// check until basicAttackOver is true
+			if(player.basicAttackOver == true)
+				SM.GoTo(StateType.player_idle);
+			#endregion
+		}
 		public override void Exit()
 		{
 			base.Exit();

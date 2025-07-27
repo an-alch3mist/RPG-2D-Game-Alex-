@@ -1,6 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 using SPACE_UTIL;
 
@@ -10,19 +10,22 @@ namespace SPACE_RPG2D
 	{
 		StateMachine SM;
 		#region new input system
-		public PlayerInputActions inputAction; 
+		public PlayerInputActions inputAction;
 		#endregion
 		public Vector2 inpVel { get; private set; }
-		public bool groundDetected;
+		public bool groundDetected, wallDetected;
+		public bool basicAttackOver;
 
-		
 		[Header("movment config")]
 		[SerializeField] float xSpeed = 8;
 		[SerializeField] float xAirSpeed = 6;
-		[SerializeField] float jumpForce = 5;
+		[SerializeField] [Range(0.05f, 1f)] float ySpeedWallMultiplier = 0.3f;
+		[SerializeField] float jumpSpeed = 15;
+		[SerializeField] float wallJumpSpeed = 10;
 
 		[Header("collision config")]
-		[SerializeField] float groundCheckDist = 0.1f;
+		[SerializeField] float groundCheckDist = 1.5f;
+		[SerializeField] float wallCheckDist = 0.5f;
 		[SerializeField] LayerMask goundLayer;
 
 		private void Awake()
@@ -47,6 +50,9 @@ namespace SPACE_RPG2D
 			new Player_MoveState(SM);
 			new Player_JumpState(SM);
 			new Player_FallState(SM);
+			new Player_WallSlideState(SM);
+			new Player_WallJumpState(SM);
+			new Player_BasicAttackState(SM);
 			SM.GoTo(StateType.player_fall);
 
 			LOG.SaveLog(SM.MAP_STATE.ToTable(name: "MAP_STATE<>"));
@@ -64,7 +70,7 @@ namespace SPACE_RPG2D
 			inputAction.player.movement.canceled;	// instant up
 			*/
 			inputAction.player.movement.performed += (ctx) => this.inpVel = ctx.ReadValue<Vector2>();
-			inputAction.player.movement.canceled  += (ctx) => this.inpVel = new Vector2(0, 0);
+			inputAction.player.movement.canceled += (ctx) => this.inpVel = new Vector2(0, 0);
 			#endregion
 		}
 
@@ -73,13 +79,14 @@ namespace SPACE_RPG2D
 			#region new input system
 			// disable or destroy gameObject
 			// unsubscribe from all audience
-			this.inputAction.Disable(); 
+			this.inputAction.Disable();
 			#endregion
 		}
 
 
 		private void Update()
 		{
+			this.DrawCollisionDetection(this.gameObject.GC<Collider2D>().bounds.center);
 			SM.UpdateCurrentState();
 		}
 
@@ -89,14 +96,13 @@ namespace SPACE_RPG2D
 			var rb = SM.info.rb;
 			SM.info.rb.velocity = new Vector2(this.xSpeed * this.inpVel.x, rb.velocity.y);
 		}
-
 		public void HandleXAirMovement()
 		{
 			var rb = SM.info.rb;
 			SM.info.rb.velocity = new Vector2(this.xAirSpeed * this.inpVel.x, rb.velocity.y);
 		}
 
-		public void HandleXFlip()
+		public void HandleXDirFlip()
 		{
 			var transform = SM.info.obj.gameObject.transform; var rb = SM.info.rb;
 			int currFacingDir = C.sign(rb.velocity.x);
@@ -104,24 +110,42 @@ namespace SPACE_RPG2D
 				return;
 			transform.localScale = new Vector3(currFacingDir, 1, 1);
 		}
+		public int getXFacingDir
+		{
+			get { return C.sign(transform.localScale.x); }
+		}
 
 		public void HandleYAnim()
 		{
 			var animator = SM.info.animator; var rb = SM.info.rb;
 			animator.SetFloat("player_yvel", rb.velocity.y);
 		}
-
-		public void HandleJump()
-		{
-			var rb = SM.info.rb;
-			rb.AddForce(Vector2.up * this.jumpForce);
-		}
-
-		public void HandleYCollisionDetection()
+		public void HandleXYCollisionDetection()
 		{
 			Vector2 center = this.gameObject.GetComponent<Collider2D>().bounds.center;
 			this.groundDetected = Physics2D.Raycast(this.transform.position, -Vector2.up, this.groundCheckDist, this.goundLayer);
-			this.DrawCollisionDetection(center);
+			this.wallDetected = Physics2D.Raycast(this.transform.position, Vector2.right * this.getXFacingDir, this.wallCheckDist, this.goundLayer);
+		}
+		public void HandleJump()
+		{
+			var rb = SM.info.rb;
+			//rb.AddForce(Vector2.up * this.jumpForce);
+			rb.velocity = new Vector2(rb.velocity.x, this.jumpSpeed);
+		}
+
+		public void HandleWallSlide()
+		{
+			var rb = SM.info.rb;
+			// eraze the xVelocity during wall slide
+			if (this.inpVel.y < 0f)
+				rb.velocity = new Vector2(0f, rb.velocity.y * 1f);
+			else
+				rb.velocity = new Vector2(0f, rb.velocity.y * this.ySpeedWallMultiplier); // if pressed nothing
+		}
+		public void HandleWallJump()
+		{
+			var rb = SM.info.rb;
+			rb.velocity = new Vector2(-this.getXFacingDir, +1.5f) * this.wallJumpSpeed;
 		}
 		#endregion
 
@@ -130,6 +154,7 @@ namespace SPACE_RPG2D
 			DRAW.col = Color.red;
 			DRAW.dt = Time.deltaTime;
 			DRAW.ARROW(center, center + new Vector2(0, -this.groundCheckDist), t: 1f);
+			DRAW.ARROW(center, center + new Vector2(this.wallCheckDist * this.getXFacingDir, 0f), t: 1f);
 		}
 	}
 }

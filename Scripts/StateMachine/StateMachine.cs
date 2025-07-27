@@ -15,6 +15,12 @@ namespace SPACE_RPG2D
 		player_jump,
 		player_fall,
 
+		player_wallslide,
+		player_walljump,
+
+		player_dash,
+		player_basicattack,
+
 		none,
 	}
 
