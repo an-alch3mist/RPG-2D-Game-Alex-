@@ -19,7 +19,6 @@ namespace SPACE_RPG2D
 			_subscribeChannel_WhenBasicAttackAnimationComplete? // if subscriber count is not zero, otherwise error
 				.Invoke(this, EventArgs.Empty);
 			// << notify subscribers
-
 		}
 	}
 

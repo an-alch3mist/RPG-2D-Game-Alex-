@@ -65,6 +65,27 @@ namespace SPACE_RPG2D
 			this.CurrentState = NewState;
 		}
 
+		// called externaly when revisit of state required with different parameter
+		Coroutine routine_ref;
+		public void GoToRevisit()
+		{
+			if (this.CurrentState == null) // if null: exit
+				return;
+			
+			if(routine_ref != null)
+				INITManager.Ins.StopCoroutine(routine_ref);
+			routine_ref = INITManager.Ins.StartCoroutine(routine());
+		}
+
+		IEnumerator routine()
+		{
+			this.CurrentState.Exit();
+			yield return new WaitForEndOfFrame();
+			this.CurrentState.Enter();
+		}
+
+
+
 		// called externally every frame
 		public void UpdateCurrentState()
 		{

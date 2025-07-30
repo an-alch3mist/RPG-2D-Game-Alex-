@@ -343,15 +343,27 @@ namespace SPACE_RPG2D
 			#endregion
 		}
 
+		int comboattack_index = 0;
 		public override void Enter()
 		{
-			base.Enter();
+			// set the comboindex, set the bool, all occured in same frame, order doesnt matter
+			var animator = SM.info.animator;
+
+			animator.SetInteger("player_comboattack_index", this.comboattack_index);
+			this.comboattack_index = (this.comboattack_index + 1) % 2;
+			base.Enter(); // animation bool is set
 		}
 		public override void Update()
 		{
 			base.Update();
 			var player = SM.info.player;
 			player.HandleXAttackMovement();
+
+			// GoTo revisit
+			#region GoTo
+			if (player.inputAction.player.attack.WasPerformedThisFrame())
+				SM.GoToRevisit();
+			#endregion
 		}
 		public override void Exit()
 		{

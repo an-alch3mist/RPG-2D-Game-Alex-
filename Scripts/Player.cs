@@ -53,7 +53,7 @@ namespace SPACE_RPG2D
 			new Player_WallSlideState(SM);
 			new Player_WallJumpState(SM);
 			new Player_BasicAttackState(SM);
-			SM.GoTo(StateType.player_fall);
+			SM.GoTo(StateType.player_idle);
 
 			LOG.SaveLog(SM.MAP_STATE.ToTable(name: "MAP_STATE<>"));
 		}
