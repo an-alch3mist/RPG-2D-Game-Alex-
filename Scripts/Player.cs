@@ -26,6 +26,7 @@ namespace SPACE_RPG2D
 		[Header("collision config")]
 		[SerializeField] float groundCheckDist = 1.5f;
 		[SerializeField] float wallCheckDist = 0.5f;
+		[SerializeField] [Range(0f, 1f)] float wallCheckRaysApartDist = 0.5f;
 		[SerializeField] LayerMask goundLayer;
 
 		private void Awake()
@@ -53,7 +54,7 @@ namespace SPACE_RPG2D
 			new Player_WallSlideState(SM);
 			new Player_WallJumpState(SM);
 			new Player_BasicAttackState(SM);
-			SM.GoTo(StateType.player_idle);
+			SM.GoTo(StateType.player_idle); // idle or fall
 
 			LOG.SaveLog(SM.MAP_STATE.ToTable(name: "MAP_STATE<>"));
 		}
@@ -123,8 +124,10 @@ namespace SPACE_RPG2D
 		public void HandleXYCollisionDetection()
 		{
 			Vector2 center = this.gameObject.GetComponent<Collider2D>().bounds.center;
-			this.groundDetected = Physics2D.Raycast(this.transform.position, -Vector2.up, this.groundCheckDist, this.goundLayer);
-			this.wallDetected = Physics2D.Raycast(this.transform.position, Vector2.right * this.getXFacingDir, this.wallCheckDist, this.goundLayer);
+			this.groundDetected = Physics2D.Raycast(center, -Vector2.up, this.groundCheckDist, this.goundLayer);
+			this.wallDetected =
+				Physics2D.Raycast(center + Vector2.up * this.wallCheckRaysApartDist, Vector2.right * this.getXFacingDir, this.wallCheckDist, this.goundLayer) &&
+				Physics2D.Raycast(center - Vector2.up * this.wallCheckRaysApartDist, Vector2.right * this.getXFacingDir, this.wallCheckDist, this.goundLayer);
 		}
 		public void HandleJump()
 		{
@@ -160,7 +163,11 @@ namespace SPACE_RPG2D
 			DRAW.col = Color.red;
 			DRAW.dt = Time.deltaTime;
 			DRAW.ARROW(center, center + new Vector2(0, -this.groundCheckDist), t: 1f);
-			DRAW.ARROW(center, center + new Vector2(this.wallCheckDist * this.getXFacingDir, 0f), t: 1f);
+
+			Vector2 a = center + Vector2.up * this.wallCheckRaysApartDist,
+					b = center - Vector2.up * this.wallCheckRaysApartDist;
+			DRAW.ARROW(a, a + new Vector2(this.wallCheckDist * this.getXFacingDir, 0f), t: 1f);
+			DRAW.ARROW(b, b + new Vector2(this.wallCheckDist * this.getXFacingDir, 0f), t: 1f);
 		}
 	}
 }

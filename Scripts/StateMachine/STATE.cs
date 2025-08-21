@@ -100,7 +100,8 @@ namespace SPACE_RPG2D
 			#region GoTo
 			var player = SM.info.player;
 			if (player.inpVel.x != 0)
-				SM.GoTo(StateType.player_move);
+				if (player.wallDetected == false) // if no wall ahead
+					SM.GoTo(StateType.player_move);
 			#endregion
 		}
 		public override void Exit()

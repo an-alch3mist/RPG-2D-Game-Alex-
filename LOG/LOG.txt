@@ -1472,3 +1472,231 @@ player_walljump      | (EntityState) stateType: player_walljump, stateMachine re
 player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
 
 
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
+MAP_STATE<>:
+pri~key              | pri~value                                                                          
+---------------------+------------------------------------------------------------------------------------
+player_idle          | (EntityState) stateType: player_idle, stateMachine ref: playerStateMachine         
+player_move          | (EntityState) stateType: player_move, stateMachine ref: playerStateMachine         
+player_jump          | (EntityState) stateType: player_jump, stateMachine ref: playerStateMachine         
+player_fall          | (EntityState) stateType: player_fall, stateMachine ref: playerStateMachine         
+player_wallslide     | (EntityState) stateType: player_wallslide, stateMachine ref: playerStateMachine    
+player_walljump      | (EntityState) stateType: player_walljump, stateMachine ref: playerStateMachine     
+player_basicattack   | (EntityState) stateType: player_basicattack, stateMachine ref: playerStateMachine  
+
+
